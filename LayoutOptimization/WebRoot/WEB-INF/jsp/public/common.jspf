@@ -1,0 +1,11 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript"  src="JS/jquery.js"></script>
+<%-- <script type="text/javascript" src="JS/pageCommon.js" charset="utf-8"></script>
+<script type="text/javascript" src="JS/PageUtils.js" charset="utf-8"></script> --%>
+<link type="text/css" rel="stylesheet" href="CSS/blue/pageCommon.css" />

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.action.extension" value="action" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.ui.theme" value="simple" />
+
+
+
+	<package name="default" namespace="/" extends="struts-default">
+
+
+		<!-- <interceptors> 声明一个拦截器 <interceptor name="checkPrivilege" class="cn.itcast.oa.interceptor.CheckPrivilegeInterceptor" 
+			/> 重新定义defaultStack拦截器，需要先判断权限 <interceptor-stack name="defaultStack"> <interceptor-ref 
+			name="checkPrivilege" /> <interceptor-ref name="defaultStack" /> </interceptor-stack> 
+			</interceptors> -->
+		<!-- 配置全局的result -->
+		<global-results>
+			<result name="error">/WEB-INF/jsp/global/error.jsp</result>
+		</global-results>
+
+		<!-- <action name="test" class="testAction"> <result> /test.jsp </result> 
+			</action> -->
+
+		<action name="user_*" class="com.controller.UserAction" method="{1}">
+			<result name="loginUI">/WEB-INF/jsp/user/loginUI.jsp</result>
+			<result name="success">/WEB-INF/jsp/home/index.jsp</result>
+		</action>
+
+		<action name="home_*" class="com.controller.HomeAction" method="{1}">
+			<result name="index">/WEB-INF/jsp/home/index.jsp</result>
+			<result name="top">/WEB-INF/jsp/home/top.jsp</result>
+			<result name="left">/WEB-INF/jsp/home/left.jsp</result>
+			<result name="right">/WEB-INF/jsp/home/right.jsp</result>
+			<result name="bottom">/WEB-INF/jsp/home/bottom.jsp</result>
+		</action>
+		<action name="project_*" class="com.controller.ProjectAction"
+			method="{1}">
+			<result name="list">/WEB-INF/jsp/project/list.jsp</result>
+			<result name="openProject">/WEB-INF/jsp/project/openProject.jsp</result>
+			<result name="newProject">/WEB-INF/jsp/project/newProject.jsp</result>
+			<result name="addUI">/WEB-INF/jsp/project/addUI.jsp</result>
+			<result name="save" type="redirectAction">project_list</result>
+			<result name="delete" type="redirectAction">project_list</result>
+			<result name="editUI">/WEB-INF/jsp/project/editUI.jsp</result>
+			<result name="edit" type="redirectAction">project_list</result>
+
+		</action>
+
+		<action name="layout_*" class="com.controller.LayoutAction"
+			method="{1}">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+			<result name="nodeParam">/WEB-INF/jsp/layout/nodeParam.jsp </result>
+			<result name="nodeParamAddUI">/WEB-INF/jsp/layout/nodeParamAddUI.jsp</result>
+			<result name="saveNodeParam" type="redirectAction">layout_nodeParam</result>
+			<result name="deleteNodeParam" type="redirectAction">layout_nodeParam</result>
+			<result name="editNodeParam" type="redirectAction">layout_nodeParam</result>
+			<result name="nodeParamEditUI">/WEB-INF/jsp/layout/nodeParamEditUI.jsp</result>
+			<result name="edgeParam">/WEB-INF/jsp/layout/edgeParam.jsp</result>
+			<result name="edgeParamAddUI">/WEB-INF/jsp/layout/edgeParamAddUI.jsp</result>
+			<result name="saveEdgeParam" type="redirectAction">layout_edgeParam</result>
+			<result name="deleteEdgeParam" type="redirectAction">layout_edgeParam</result>
+			<result name="edgeParamEditUI">/WEB-INF/jsp/layout/edgeParamEditUI.jsp
+			</result>
+			<result name="editEdgeParam" type="redirectAction">layout_edgeParam</result>
+			<result name="algorithmParam">/WEB-INF/jsp/layout/algorithmParam.jsp</result>
+			<result name="algorithm">/WEB-INF/jsp/layout/algorithm.jsp</result>
+			<result name="report">/WEB-INF/jsp/layout/report.jsp</result>
+			<result name="projectParam">/WEB-INF/jsp/layout/projectParam.jsp</result>
+			<result name="saveAlgorithmParam">/WEB-INF/jsp/layout/algorithmParam.jsp</result>
+			<result name="showModel">WEB-INF/jsp/layout/model.jsp</result>
+		</action>
+
+		<action name="diameter_*" class="com.controller.DiameterAction"
+			method="{1}">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+			<result name="nodeParam">/WEB-INF/jsp/diameter/nodeParam.jsp </result>
+			<result name="nodeParamAddUI">/WEB-INF/jsp/diameter/nodeParamAddUI.jsp </result>
+			<result name="saveNodeParam" type="redirectAction">diameter_nodeParam </result>
+			<result name="deleteNodeParam" type="redirectAction">diameter_nodeParam
+			</result>
+			<result name="nodeParamEditUI">/WEB-INF/jsp/diameter/nodeParamEditUI.jsp
+			</result>
+			<result name="editNodeParam" type="redirectAction">diameter_nodeParam</result>
+			<result name="edgeParam">/WEB-INF/jsp/diameter/edgeParam.jsp</result>
+			<result name="edgeParamAddUI">/WEB-INF/jsp/diameter/edgeParamAddUI.jsp</result>
+			<result name="deleteEdgeParam" type="redirectAction">diameter_edgeParam
+			</result>
+			<result name="edgeParamEditUI">/WEB-INF/jsp/diameter/edgeParamEditUI.jsp
+			</result>
+			<result name="editEdgeParam" type="redirectAction">diameter_edgeParam</result>
+			<result name="algorithmParam">/WEB-INF/jsp/diameter/algorithmParam.jsp</result>
+			<result name="algorithm">/WEB-INF/jsp/diameter/algorithm.jsp</result>
+			<result name="continueAlgorithm">/WEB-INF/jsp/diameter/algorithm.jsp</result>
+			<result name="report">/WEB-INF/jsp/diameter/report.jsp</result>
+			<result name="projectParam">/WEB-INF/jsp/diameter/projectParam.jsp</result>
+			<result name="nextToDiameter">/WEB-INF/jsp/layout/nextToDiameter.jsp</result>
+		</action>
+		<action name="help_*" class="com.controller.HelpAction" method="{1}">
+			<result name="about">/WEB-INF/jsp/help/about.jsp</result>
+			<result name="help">/WEB-INF/jsp/help/help.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="test_ajax" extends="json-default" >
+    	<action name="myCalculate"
+			class="com.controller.LayoutAction" method="calculate">
+		</action>
+	</package>
+
+</struts>
